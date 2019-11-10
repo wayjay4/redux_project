@@ -5,8 +5,9 @@ export const increment = (addBy) => {
   };
 };
 
-export const decrement = () => {
+export const decrement = (subtractBy) => {
   return {
-    type: 'DECREMENT'
+    type: 'DECREMENT',
+    payload: subtractBy
   };
 };
