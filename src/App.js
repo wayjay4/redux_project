@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
+import {increment} from './actions/index';
 
 function App() {
   const counter = useSelector(state => state.counter);
@@ -9,6 +10,12 @@ function App() {
   return (
     <div className="App">
       <p>Counter is currently: {counter}</p>
+      <p>
+        <button>+</button>
+        <button>-</button>
+      </p>
+
+      <br /><br />
       <p>{isLogged ? "you are logged in" : "please login"}</p>
     </div>
   );
