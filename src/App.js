@@ -12,7 +12,7 @@ function App() {
     <div className="App">
       <p>Counter is currently: {counter}</p>
       <p>
-        <button onClick={() => dispatch(increment())}>+</button>
+        <button onClick={() => dispatch(increment(5))}>+</button>
         <button onClick={() => dispatch(decrement())}>-</button>
       </p>
 
