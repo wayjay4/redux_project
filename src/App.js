@@ -6,12 +6,13 @@ import {increment} from './actions/index';
 function App() {
   const counter = useSelector(state => state.counter);
   const isLogged = useSelector(state => state.isLogged);
+  const dispatch = useDispatch();
 
   return (
     <div className="App">
       <p>Counter is currently: {counter}</p>
       <p>
-        <button>+</button>
+        <button onClick={() => dispatch(increment())}>+</button>
         <button>-</button>
       </p>
 
