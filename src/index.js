@@ -5,6 +5,7 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {createStore} from 'redux';
 import allReducers from './reducers/index';
+import {Provider} from 'react-redux';
 
 // see website for chrome extension 'redux devtools ext': https://github.com/zalmoxisus/redux-devtools-extension
 
@@ -14,7 +15,9 @@ const store = createStore(
 );
 
 ReactDOM.render(
-  <App />
+  <Provider store={store}>
+    <App />
+  </Provider>
   ,
   document.getElementById('root'));
 
