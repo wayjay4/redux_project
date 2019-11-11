@@ -35,11 +35,4 @@ export function subtract_from_counter(payload){
   };
 }
 
-export function editCounter(payload){
-  return {
-    type: payload.actionRequest,
-    payload: payload.params
-  };
-}
-
 export default counterReducer;

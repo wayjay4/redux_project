@@ -3,8 +3,9 @@ import './App.css';
 import {useSelector, useDispatch} from 'react-redux';
 import {increment, decrement} from './actions/counter';
 import {login, logout} from './actions/isLogged';
-import {add_to_counter, subtract_from_counter, editCounter} from './ducks/counter'; // ducks pattern: stores both reducer and action together instead of seperate files
-import {login_user, logout_user, editIsLogged} from './ducks/isLogged';
+import {add_to_counter, subtract_from_counter} from './ducks/counter'; // ducks pattern: stores both reducer and action together instead of seperate files
+import {login_user, logout_user} from './ducks/isLogged';
+import {actionRouter} from './reducers/index';
 
 function App() {
   const counter = useSelector(state => state.counter);
@@ -30,8 +31,8 @@ function App() {
           <button onClick={() => dispatch(subtract_from_counter({value:2}))}>-</button>
           <span>&nbsp;-<i>(using seperate dispatch calls)</i></span>
           <br />
-          <button onClick={() => dispatch(editCounter({actionRequest:'add_counter', params:{value:12}}))}>+</button>
-          <button onClick={() => dispatch(editCounter({actionRequest:'subtract_counter', params:{value:4}}))}>-</button>
+          <button onClick={() => dispatch(actionRouter('add_counter', {value:12}))}>+</button>
+          <button onClick={() => dispatch(actionRouter('subtract_counter', {value:4}))}>-</button>
           <span>&nbsp;-<i>(using one dispatch call --> 'Payload-based actions')</i></span>
         </p>
       </div>
@@ -72,14 +73,14 @@ function App() {
         isLoggedState.isLogged ?
         <div>
           <p>
-            you are logged in</p> <p><button onClick={() => dispatch(editIsLogged({actionRequest:'log_out_user', params:{value:null}}))}>Logout</button>
+            you are logged in</p> <p><button onClick={() => dispatch(actionRouter('log_out_user', {value:null}))}>Logout</button>
             <span>&nbsp;-<i>(using one dispatch call --> 'Payload-based actions')</i></span>
           </p>
         </div>
         :
         <div>
           <p>
-            please login (ducks)</p> <p><button onClick={() => dispatch(editIsLogged({actionRequest:'log_in_user', params:{value:null}}))}>Login</button>
+            please login (ducks)</p> <p><button onClick={() => dispatch(actionRouter('log_in_user', {value:null}))}>Login</button>
             <span>&nbsp;-<i>(using one dispatch call --> 'Payload-based actions')</i></span>
           </p>
         </div>

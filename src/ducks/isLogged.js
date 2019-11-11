@@ -36,11 +36,4 @@ export function logout_user(payload){
   };
 }
 
-export function editIsLogged(payload){
-  return {
-    type: payload.actionRequest,
-    payload: payload.params
-  };
-}
-
 export default isLoggedReducer;

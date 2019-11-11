@@ -11,4 +11,11 @@ const allReducers = combineReducers({
   isLoggedState
 });
 
+export function actionRouter(type, payload){
+  return {
+    type,
+    payload
+  };
+}
+
 export default allReducers;
