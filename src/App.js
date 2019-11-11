@@ -12,8 +12,8 @@ function App() {
     <div className="App">
       <p>Counter is currently: {counter}</p>
       <p>
-        <button onClick={() => dispatch(increment(5))}>+</button>
-        <button onClick={() => dispatch(decrement(3))}>-</button>
+        <button onClick={() => dispatch(increment({addBy: 5}))}>+</button>
+        <button onClick={() => dispatch(decrement({subtractBy: 3}))}>-</button>
       </p>
 
       <br /><br />

@@ -1,13 +1,13 @@
-export const increment = (addBy) => {
+export const increment = (payload) => {
   return {
     type: 'INCREMENT',
-    payload: addBy
+    payload: payload
   };
 };
 
-export const decrement = (subtractBy) => {
+export const decrement = (payload) => {
   return {
     type: 'DECREMENT',
-    payload: subtractBy
+    payload: payload
   };
 };
