@@ -3,19 +3,25 @@ const LOG_OUT = 'log_out_user';
 
 // reducer creator
 function isLoggedReducer(state={isLogged:false}, action={}){
+  var newState;
+
   switch (action.type) {
     case LOGIN_IN:
-      return {
+      newState = {
         ...state,
         isLogged: true,
-        [action.payload.id]: action.payload
+        payload: action.payload
       };
+      console.log("actionRequest: "+LOGIN_IN);console.dir(newState);
+      return newState;
     case LOG_OUT:
-      return {
+      newState = {
         ...state,
         isLogged: false,
-        [action.payload.id]: action.payload
+        payload: action.payload
       };
+      console.log("actionRequest: "+LOG_OUT);console.dir(newState);
+      return newState;
     default:
       return state;
   }

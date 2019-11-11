@@ -2,19 +2,25 @@ const ADD_COUNTER = 'add_counter';
 const SUBTRACT_COUNTER = 'subtract_counter';
 
 function counterReducer(state={counter:0}, action={}){
+  var newState;
+
   switch (action.type) {
     case ADD_COUNTER:
-      return {
+      newState = {
         ...state,
         counter: state.counter + action.payload.value,
-        [action.payload.id]: action.payload
+        payload: action.payload
       };
+      console.log("actionRequest: "+ADD_COUNTER);console.dir(newState);
+      return newState;
     case SUBTRACT_COUNTER:
-      return {
+      newState = {
         ...state,
         counter: state.counter - action.payload.value,
-        [action.payload.id]: action.payload
+        payload: action.payload
       };
+      console.log("actionRequest: "+SUBTRACT_COUNTER);console.dir(newState);
+      return newState;
     default:
       return state;
   }
