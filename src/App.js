@@ -4,7 +4,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import {increment, decrement} from './actions/counter';
 import {login, logout} from './actions/isLogged';
 import {add_to_counter, subtract_from_counter, editCounter} from './ducks/counter'; // ducks pattern: stores both reducer and action together instead of seperate files
-import {login_user, logout_user} from './ducks/isLogged';
+import {login_user, logout_user, editIsLogged} from './ducks/isLogged';
 
 function App() {
   const counter = useSelector(state => state.counter);
@@ -54,11 +54,34 @@ function App() {
       {
         isLoggedState.isLogged ?
         <div>
-          <p>you are logged in</p> <p><button onClick={() => dispatch(logout_user({}))}>Logout</button></p>
+          <p>
+            you are logged in</p> <p><button onClick={() => dispatch(logout_user({}))}>Logout</button>
+            <span>&nbsp;-<i>(using seperate dispatch calls)</i></span>
+          </p>
         </div>
         :
         <div>
-          <p>please login (ducks)</p> <p><button onClick={() => dispatch(login_user({}))}>Login</button></p>
+          <p>
+            please login (ducks)</p> <p><button onClick={() => dispatch(login_user({}))}>Login</button>
+            <span>&nbsp;-<i>(using seperate dispatch calls)</i></span>
+          </p>
+        </div>
+      }
+
+      {
+        isLoggedState.isLogged ?
+        <div>
+          <p>
+            you are logged in</p> <p><button onClick={() => dispatch(editCounter({actionRequest:'log_out_user',value:null}))}>Logout</button>
+            <span>&nbsp;-<i>(using one dispatch call --> 'Payload-based actions')</i></span>
+          </p>
+        </div>
+        :
+        <div>
+          <p>
+            please login (ducks)</p> <p><button onClick={() => dispatch(editCounter({actionRequest:'log_in_user',value:null}))}>Login</button>
+            <span>&nbsp;-<i>(using one dispatch call --> 'Payload-based actions')</i></span>
+          </p>
         </div>
       }
     </div>

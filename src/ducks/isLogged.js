@@ -1,5 +1,5 @@
 const LOGIN_IN = 'log_in_user';
-const LOG_OUT = 'log-out_user';
+const LOG_OUT = 'log_out_user';
 
 // reducer creator
 function isLoggedReducer(state={isLogged:false}, action={}){
@@ -32,6 +32,13 @@ export function login_user(payload){
 export function logout_user(payload){
   return {
     type: LOG_OUT,
+    payload
+  };
+}
+
+export function editIsLogged(payload){
+  return {
+    type: payload.actionRequest,
     payload
   };
 }
