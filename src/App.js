@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import {useSelector, useDispatch} from 'react-redux';
 import {increment, decrement} from './actions/counter';
+import {login, logout} from './actions/isLogged';
 
 function App() {
   const counter = useSelector(state => state.counter);
@@ -10,14 +11,26 @@ function App() {
 
   return (
     <div className="App">
-      <p>Counter is currently: {counter}</p>
-      <p>
-        <button onClick={() => dispatch(increment({addBy: 5}))}>+</button>
-        <button onClick={() => dispatch(decrement({subtractBy: 3}))}>-</button>
-      </p>
+      <div>
+        <p>Counter is currently: {counter}</p>
+        <p>
+          <button onClick={() => dispatch(increment({addBy: 5}))}>+</button>
+          <button onClick={() => dispatch(decrement({subtractBy: 3}))}>-</button>
+        </p>
+      </div>
 
       <br /><br />
-      <p>{isLogged ? "you are logged in" : "please login"}</p>
+
+      {
+        isLogged ?
+        <div>
+          <p>you are logged in</p> <p><button onClick={() => dispatch(logout({}))}>Logout</button></p>
+        </div>
+        :
+        <div>
+          <p>please login</p> <p><button onClick={() => dispatch(login({}))}>Login</button></p>
+        </div>
+      }
     </div>
   );
 }
