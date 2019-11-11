@@ -38,7 +38,7 @@ export function subtract_from_counter(payload){
 export function editCounter(payload){
   return {
     type: payload.actionRequest,
-    payload
+    payload: payload.params
   };
 }
 
