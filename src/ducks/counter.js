@@ -6,13 +6,13 @@ function counterReducer(state={counter:0}, action={}){
     case ADD_COUNTER:
       return {
         ...state,
-        counter: state.counter + action.payload.addBy,
+        counter: state.counter + action.payload.value,
         [action.payload.id]: action.payload
       };
     case SUBTRACT_COUNTER:
       return {
         ...state,
-        counter: state.counter - action.payload.subtractBy,
+        counter: state.counter - action.payload.value,
         [action.payload.id]: action.payload
       };
     default:

@@ -24,11 +24,11 @@ function App() {
             counterState.counter
           }
           <br />
-          <button onClick={() => dispatch(add_to_counter({addBy:10}))}>+</button>
-          <button onClick={() => dispatch(subtract_from_counter({subtractBy:2}))}>-</button>
+          <button onClick={() => dispatch(add_to_counter({value:10}))}>+</button>
+          <button onClick={() => dispatch(subtract_from_counter({value:2}))}>-</button>
         </p>
       </div>
-
+value
       <br /><br />
 
       {
