@@ -3,10 +3,12 @@ import './App.css';
 import {useSelector, useDispatch} from 'react-redux';
 import {increment, decrement} from './actions/counter';
 import {login, logout} from './actions/isLogged';
+import {add_to_counter} from './ducks/counter'; // ducks pattern: stores both reducer and action together instead of seperate files
 
 function App() {
   const counter = useSelector(state => state.counter);
   const isLogged = useSelector(state => state.isLogged);
+  const counterState = useSelector(state => state.counterState);
   const dispatch = useDispatch();
 
   return (
@@ -16,6 +18,13 @@ function App() {
         <p>
           <button onClick={() => dispatch(increment({addBy: 5}))}>+</button>
           <button onClick={() => dispatch(decrement({subtractBy: 3}))}>-</button>
+        </p>
+        <p>
+          counterState is currently: {
+            counterState.counter
+          }
+          <br />
+          <button onClick={() => dispatch(add_to_counter({addBy:10}))}>+</button>
         </p>
       </div>
 
